@@ -7,7 +7,10 @@ The public-facing website for PauzeControl, a PauzeDevs project. The visual dire
 - Home: product overview and development-stage feature descriptions.
 - System status: separates what this page can verify from service and device monitoring that is not connected.
 - Documentation: connection model, setup overview, permissions, file-transfer safety, troubleshooting, and bug-reporting guidance.
+- Not found: a branded 404 page for invalid routes.
 - Changelog: website progress notes.
+
+The public site includes canonical page URLs, social preview metadata, `robots.txt`, and a sitemap for its primary pages. The glass reflection follows pointer position on fine-pointer devices; it does not tilt cards, require WebGL, or load third-party libraries.
 
 ## Important status limitation
 
