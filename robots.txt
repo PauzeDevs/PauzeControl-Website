@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pauzecontrol.devs.surf/sitemap.xml
+Sitemap: https://pauzedevs.github.io/PauzeControl-Website/sitemap.xml
