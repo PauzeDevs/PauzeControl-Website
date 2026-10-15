@@ -435,3 +435,84 @@ h1 { max-width: 660px; margin: 27px 0 22px; font-size: clamp(52px, 7vw, 88px); l
   .not-found-actions { align-items: stretch; flex-direction: column; }
   .not-found-actions .button { width: 100%; }
 }
+
+
+/* Documentation page — clearer hierarchy and reading comfort. */
+.docs-page { padding-top: 20px; padding-bottom: 88px; }
+.docs-hero-links { margin-top: 22px; }
+.docs-grid { grid-template-columns: 224px minmax(0, 1fr); gap: 24px; }
+.docs-nav { padding: 15px; border-radius: 17px; }
+.docs-nav-label { margin: 5px 9px 12px; font-size: 10px; letter-spacing: .12em; }
+.docs-nav a { padding: 10px 11px; font-size: 12px; line-height: 1.4; }
+.docs-nav a:focus-visible,
+.docs-faq summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.docs-block { margin-bottom: 16px; padding: clamp(22px, 3.2vw, 34px); border-radius: 22px; }
+.docs-section-top { display: flex; align-items: center; gap: 11px; margin-bottom: 14px; }
+.docs-number { display: inline-grid; width: 29px; height: 29px; place-items: center; flex: 0 0 auto; border: 1px solid rgba(139,188,255,.22); border-radius: 9px; background: rgba(139,188,255,.07); color: #b9d5ff; font-size: 11px; font-weight: 750; }
+.docs-section-top .section-kicker { margin: 0; }
+.docs-block h2 { margin: 0 0 13px; font-size: clamp(23px, 2.3vw, 29px); line-height: 1.2; letter-spacing: -.035em; }
+.docs-block h3 { margin: 24px 0 9px; font-size: 16px; line-height: 1.35; }
+.docs-block p,
+.docs-block li { color: #b2bac9; font-size: 13px; line-height: 1.8; }
+.docs-block p { margin: 0 0 13px; }
+.docs-block ul,
+.docs-block ol { margin: 12px 0 0; padding-left: 21px; }
+.docs-block li + li { margin-top: 8px; }
+.docs-block strong { color: #eef2fb; font-weight: 650; }
+.docs-block code { padding: 2px 5px; border: 1px solid rgba(255,255,255,.08); border-radius: 5px; background: rgba(255,255,255,.055); color: #d7e5ff; font-size: .91em; overflow-wrap: anywhere; }
+.docs-block .docs-muted { margin-top: 16px; color: #858fa3; font-size: 12px; }
+.docs-callout { margin-top: 20px; padding: 15px 17px; border-radius: 13px; font-size: 12px; line-height: 1.75; }
+.docs-steps { display: grid; gap: 10px; margin-top: 20px; }
+.docs-step { display: grid; grid-template-columns: 29px minmax(0, 1fr); gap: 12px; align-items: start; padding: 14px; border: 1px solid rgba(255,255,255,.075); border-radius: 13px; background: rgba(255,255,255,.025); }
+.docs-step > span { display: grid; width: 27px; height: 27px; place-items: center; border-radius: 8px; background: rgba(139,188,255,.09); color: #bdd8ff; font-size: 11px; font-weight: 750; }
+.docs-step strong { display: block; margin: 2px 0 4px; font-size: 13px; }
+.docs-step p { margin: 0; font-size: 12px; }
+.docs-platform-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+.docs-platform { min-width: 0; padding: 19px; border: 1px solid rgba(255,255,255,.085); border-radius: 15px; background: rgba(255,255,255,.025); }
+.docs-platform-label { color: #9abfff; font-size: 10px; font-weight: 750; letter-spacing: .13em; }
+.docs-platform h3 { margin: 9px 0 7px; font-size: 17px; }
+.docs-platform ul { margin-top: 11px; padding-left: 17px; }
+.docs-platform li { font-size: 12px; }
+.docs-code-label { margin: 20px 0 8px; color: #9ca8bd; font-size: 11px; font-weight: 650; }
+.docs-code { margin: 0; padding: 15px 17px; overflow-x: auto; border: 1px solid rgba(255,255,255,.09); border-radius: 12px; background: rgba(0,0,0,.25); color: #d8e5fb; font: 12px/1.85 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; white-space: pre; }
+.docs-code code { padding: 0; border: 0; background: transparent; color: inherit; font: inherit; }
+.docs-field-list { margin: 17px 0; border: 1px solid rgba(255,255,255,.08); border-radius: 13px; overflow: hidden; }
+.docs-field-list > div { display: grid; grid-template-columns: minmax(110px, .33fr) minmax(0, 1fr); gap: 16px; padding: 13px 15px; background: rgba(255,255,255,.02); }
+.docs-field-list > div + div { border-top: 1px solid rgba(255,255,255,.07); }
+.docs-field-list > div > span { color: #e4eaf5; font-size: 12px; font-weight: 650; }
+.docs-field-list p { margin: 0; font-size: 12px; }
+.docs-permission-list { display: grid; gap: 0; margin-top: 15px; }
+.docs-permission-list > div { padding: 15px 0; border-top: 1px solid rgba(255,255,255,.075); }
+.docs-permission-list strong { display: block; margin-bottom: 4px; font-size: 13px; }
+.docs-permission-list p { margin: 0; font-size: 12px; }
+.docs-faq { border-top: 1px solid rgba(255,255,255,.09); }
+.docs-faq:last-child { border-bottom: 1px solid rgba(255,255,255,.09); }
+.docs-faq summary { position: relative; padding: 17px 28px 17px 0; color: #ecf0f8; font-size: 13px; font-weight: 650; line-height: 1.55; cursor: pointer; list-style: none; }
+.docs-faq summary::-webkit-details-marker { display: none; }
+.docs-faq summary::after { position: absolute; top: 15px; right: 3px; content: "+"; color: #a9caff; font-size: 20px; font-weight: 400; }
+.docs-faq[open] summary::after { content: "−"; }
+.docs-faq ul { margin: 0 0 18px; }
+.docs-faq p { margin: 0 0 18px; }
+.docs-links { gap: 10px; }
+.docs-links .button { min-height: 42px; font-size: 11px; }
+
+@media (max-width: 760px) {
+  .docs-page { padding-top: 12px; padding-bottom: 64px; }
+  .docs-grid { grid-template-columns: minmax(0, 1fr); gap: 15px; }
+  .docs-nav { position: relative; top: auto; display: flex; flex-wrap: wrap; gap: 4px; padding: 11px; }
+  .docs-nav-label { width: 100%; margin: 4px 8px 7px; }
+  .docs-nav a { padding: 8px 10px; font-size: 11px; background: rgba(255,255,255,.025); }
+  .docs-block { padding: 22px 19px; }
+  .docs-block h2 { font-size: 24px; }
+  .docs-block p,
+  .docs-block li { font-size: 12px; }
+  .docs-platform-grid { grid-template-columns: 1fr; }
+  .docs-field-list > div { grid-template-columns: 1fr; gap: 5px; }
+}
+@media (max-width: 430px) {
+  .docs-block { padding: 20px 16px; border-radius: 18px; }
+  .docs-step { padding: 12px; gap: 10px; }
+  .docs-code { padding: 13px; font-size: 11px; }
+  .docs-links { align-items: stretch; flex-direction: column; }
+  .docs-links .button { width: 100%; }
+}
