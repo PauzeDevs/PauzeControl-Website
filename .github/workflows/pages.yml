@@ -1,0 +1,128 @@
+name: Website validation and Pages deployment
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages-\${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate static website
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate required files and local links
+        run: |
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from urllib.parse import unquote, urlsplit
+          import sys
+
+          root = Path(".").resolve()
+          required = [
+              "index.html",
+              "status.html",
+              "docs.html",
+              "assets/css/styles.css",
+              "assets/js/main.js",
+              "assets/favicon.svg",
+          ]
+          missing = [name for name in required if not (root / name).is_file()]
+          if missing:
+              print("Missing required files:")
+              for name in missing:
+                  print(f"  - {name}")
+              sys.exit(1)
+
+          class PageParser(HTMLParser):
+              def __init__(self):
+                  super().__init__(convert_charrefs=True)
+                  self.links = []
+                  self.ids = set()
+              def handle_starttag(self, tag, attrs):
+                  attrs = dict(attrs)
+                  if attrs.get("id"):
+                      self.ids.add(attrs["id"])
+                  for key in ("href", "src"):
+                      value = attrs.get(key)
+                      if value:
+                          self.links.append((key, value))
+
+          pages = sorted(root.glob("*.html"))
+          parsed = {}
+          failed = False
+          for page in pages:
+              parser = PageParser()
+              parser.feed(page.read_text(encoding="utf-8"))
+              parsed[page.resolve()] = parser
+
+          for page, parser in parsed.items():
+              for kind, raw in parser.links:
+                  url = urlsplit(raw.strip())
+                  if url.scheme or url.netloc or raw.startswith("//"):
+                      continue
+                  target_name = unquote(url.path)
+                  target = page if not target_name else (page.parent / target_name).resolve()
+                  if root not in target.parents and target != root:
+                      print(f"FAIL: {page.relative_to(root)} has path outside site: {raw}")
+                      failed = True
+                      continue
+                  if not target.is_file():
+                      print(f"FAIL: {page.relative_to(root)} has missing {kind}: {raw}")
+                      failed = True
+                      continue
+                  if url.fragment and target.suffix.lower() == ".html":
+                      target_parser = parsed.get(target)
+                      if target_parser and unquote(url.fragment) not in target_parser.ids:
+                          print(f"FAIL: {page.relative_to(root)} has missing anchor: {raw}")
+                          failed = True
+
+          if failed:
+              sys.exit(1)
+          print(f"Validated {len(pages)} HTML pages and local file links.")
+          PY
+
+      - name: Check JavaScript syntax
+        run: node --check assets/js/main.js
+
+  deploy:
+    name: Deploy GitHub Pages
+    needs: validate
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: \${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy site
+        id: deployment
+        uses: actions/deploy-pages@v4
