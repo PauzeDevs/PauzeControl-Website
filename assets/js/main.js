@@ -29,6 +29,25 @@
     document.addEventListener("click", (event) => {
       if (!nav.contains(event.target) && !menuButton.contains(event.target)) closeMenu();
     });
+    window.addEventListener("resize", () => {
+      if (window.matchMedia("(min-width: 761px)").matches) closeMenu();
+    }, { passive: true });
+  }
+
+  // A restrained pointer-following reflection gives glass surfaces depth without tilting them.
+  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (finePointer) {
+    document.querySelectorAll(".glass-card, .glass-panel, .glass-nav").forEach((surface) => {
+      surface.addEventListener("pointerenter", () => surface.classList.add("is-glass-active"), { passive: true });
+      surface.addEventListener("pointermove", (event) => {
+        const rect = surface.getBoundingClientRect();
+        const x = Math.max(0, Math.min(100, ((event.clientX - rect.left) / rect.width) * 100));
+        const y = Math.max(0, Math.min(100, ((event.clientY - rect.top) / rect.height) * 100));
+        surface.style.setProperty("--pointer-x", `${x.toFixed(2)}%`);
+        surface.style.setProperty("--pointer-y", `${y.toFixed(2)}%`);
+      }, { passive: true });
+      surface.addEventListener("pointerleave", () => surface.classList.remove("is-glass-active"), { passive: true });
+    });
   }
 
   const revealItems = document.querySelectorAll(".reveal");
