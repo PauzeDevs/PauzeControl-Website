@@ -4,6 +4,10 @@ Changes to the PauzeControl website are tracked here. App releases are managed s
 
 ## Unreleased
 
+- Add a branded 404 page and search-engine discovery files for the custom domain.
+- Add canonical URLs and social preview metadata to the main pages.
+- Add a subtle pointer-aware Liquid Glass reflection without 3D transforms or runtime dependencies.
+- Improve keyboard focus visibility and reset the mobile menu when returning to desktop width.
 - Add accessible responsive navigation.
 - Add the product overview and feature descriptions with a clear in-development disclaimer.
 - Add a status page that distinguishes the page being loaded from real independent uptime monitoring.
