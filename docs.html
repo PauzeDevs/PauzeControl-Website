@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#08090c">
-  <meta name="description" content="PauzeControl setup notes, connection model, permissions, and troubleshooting.">
+  <meta name="description" content="Practical PauzeControl setup guide: requirements, Mac agent installation, Android pairing, permissions, transfers, and troubleshooting.">
   <link rel="canonical" href="https://pauzecontrol.devs.surf/docs.html">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Documentation — PauzeControl">
-  <meta property="og:description" content="Setup guidance, connection model, permissions, and troubleshooting for PauzeControl.">
+  <meta property="og:description" content="Install, connect, and troubleshoot PauzeControl with clear step-by-step guidance.">
   <meta property="og:url" content="https://pauzecontrol.devs.surf/docs.html">
   <meta name="twitter:card" content="summary">
   <title>Documentation — PauzeControl</title>
@@ -38,95 +38,193 @@
   <main id="main">
     <section class="page-hero shell">
       <div class="breadcrumb"><a href="index.html">PauzeControl</a><span aria-hidden="true">/</span><span>Documentation</span></div>
-      <div class="section-kicker">Getting started</div>
-      <h1>Clear steps.<br><span class="text-gradient">No mystery.</span></h1>
-      <p>These are project-level notes for the current development phase. Exact pairing controls and permission prompts can change between test builds, so the app repository and the UI in your build remain the source of truth.</p>
+      <div class="section-kicker">Documentation</div>
+      <h1>Set up.<br><span class="text-gradient">Connect. Control.</span></h1>
+      <p>A practical guide to preparing your Mac and Android device, connecting them over your private Tailscale network, and resolving common issues.</p>
+      <div class="docs-links docs-hero-links">
+        <a class="button button-primary" href="#quick-start">Start setup <span aria-hidden="true">↓</span></a>
+        <a class="button button-glass" href="https://github.com/PauzeDevs/PauzeControl" target="_blank" rel="noreferrer">App repository ↗</a>
+      </div>
     </section>
 
-    <section class="shell page-content">
+    <section class="shell page-content docs-page">
       <div class="docs-grid">
-        <aside class="docs-nav glass-card" aria-label="On this page">
-          <div class="docs-nav-label">On this page</div>
-          <a href="#before-you-start">Before you start</a>
-          <a href="#pairing">Pairing overview</a>
+        <aside class="docs-nav glass-card" aria-label="Documentation sections">
+          <div class="docs-nav-label">IN THIS GUIDE</div>
+          <a href="#quick-start">Quick start</a>
+          <a href="#requirements">Requirements</a>
+          <a href="#mac-agent">Install the Mac agent</a>
+          <a href="#android-app">Prepare Android</a>
+          <a href="#connect">Connect your devices</a>
           <a href="#permissions">Permissions</a>
-          <a href="#transfers">File transfers</a>
+          <a href="#safe-use">Privacy and safe use</a>
           <a href="#troubleshooting">Troubleshooting</a>
-          <a href="#reporting">Report a bug</a>
+          <a href="#reporting">Report an issue</a>
         </aside>
 
         <article class="docs-article">
-          <section class="docs-block glass-card" id="before-you-start">
-            <div class="section-kicker">01 / Read first</div>
-            <h2>Before you start</h2>
-            <p>PauzeControl is under active development. Features may be incomplete, and test builds may not be suitable for general use.</p>
-            <ul>
-              <li>Use only an app build shared through your approved testing channel.</li>
-              <li>Keep the Mac-side app and Android companion on compatible builds.</li>
-              <li>Check the app repository's current notes for known issues before testing.</li>
-              <li>Back up important files before testing file transfer functionality.</li>
-            </ul>
-            <div class="docs-callout">Public downloads are intentionally not offered by this website while release approval is pending.</div>
-            <div class="docs-links"><a class="button button-glass" href="https://github.com/PauzeDevs/PauzeControl" target="_blank" rel="noreferrer">Open app repository ↗</a></div>
+          <section class="docs-block glass-card" id="quick-start">
+            <div class="docs-section-top"><span class="docs-number">01</span><span class="section-kicker">START HERE</span></div>
+            <h2>Quick start</h2>
+            <p>PauzeControl has two parts: an Android controller and a native agent running on the Mac you want to control. They communicate over your private Tailscale network; this website does not relay the connection.</p>
+            <div class="docs-steps">
+              <div class="docs-step"><span>1</span><div><strong>Prepare both devices</strong><p>Install Tailscale on your Mac and Android device, and sign in to the same trusted tailnet.</p></div></div>
+              <div class="docs-step"><span>2</span><div><strong>Install the Mac agent</strong><p>Build and install the agent from the project repository, then keep the pairing secret it prints private.</p></div></div>
+              <div class="docs-step"><span>3</span><div><strong>Add a Mac profile on Android</strong><p>Enter the Mac's Tailscale IP or hostname, the agent port, and the pairing secret.</p></div></div>
+              <div class="docs-step"><span>4</span><div><strong>Verify the connection</strong><p>Open the app dashboard. If the Mac appears offline, check network access, profile details, and permissions.</p></div></div>
+            </div>
+            <div class="docs-callout"><strong>Important:</strong> never expose the Mac agent's control port to the public internet or share your pairing secret in an issue, screenshot, or chat.</div>
           </section>
 
-          <section class="docs-block glass-card" id="pairing">
-            <div class="section-kicker">02 / Connection</div>
-            <h2>Pairing overview</h2>
-            <p>The current design uses a Mac-side agent and an Android companion that communicate over a direct device connection. This public website is not a pairing service and does not proxy your local session.</p>
+          <section class="docs-block glass-card" id="requirements">
+            <div class="docs-section-top"><span class="docs-number">02</span><span class="section-kicker">BEFORE INSTALLING</span></div>
+            <h2>Requirements</h2>
+            <div class="docs-platform-grid">
+              <div class="docs-platform">
+                <div class="docs-platform-label">MAC</div>
+                <h3>Mac agent</h3>
+                <ul>
+                  <li>macOS 14 (Sonoma) or newer.</li>
+                  <li>Tailscale installed and connected.</li>
+                  <li>Git and Xcode Command Line Tools for building from source.</li>
+                  <li>Screen Recording permission for Live Screen; Accessibility for supported input control.</li>
+                </ul>
+              </div>
+              <div class="docs-platform">
+                <div class="docs-platform-label">ANDROID</div>
+                <h3>Controller app</h3>
+                <ul>
+                  <li>Android 8.0 (API 26) or newer.</li>
+                  <li>Tailscale installed and signed in to the same trusted network.</li>
+                  <li>A compatible PauzeControl build.</li>
+                </ul>
+              </div>
+            </div>
+            <p class="docs-muted">Keep the Android app and Mac agent on compatible versions. Newer features may not work when one side is running an older build. Check the release notes before updating.</p>
+          </section>
+
+          <section class="docs-block glass-card" id="mac-agent">
+            <div class="docs-section-top"><span class="docs-number">03</span><span class="section-kicker">MAC SETUP</span></div>
+            <h2>Install the Mac agent</h2>
+            <p>Run these commands in Terminal on the Mac you intend to control. If the command-line tools are already installed, skip the first command.</p>
+            <div class="docs-code-label">1 · Install command-line tools</div>
+            <pre class="docs-code"><code>xcode-select --install</code></pre>
+            <div class="docs-code-label">2 · Download the repository and enter the Mac project</div>
+            <pre class="docs-code"><code>git clone https://github.com/PauzeDevs/PauzeControl.git
+cd PauzeControl/mac</code></pre>
+            <div class="docs-code-label">3 · Build and install</div>
+            <pre class="docs-code"><code>swift package dump-package
+swift build -c release
+./install.sh</code></pre>
+            <p>The installer registers the agent as a user LaunchAgent and prints a pairing secret. Store that secret securely; anyone who obtains it may be able to authenticate to your device, depending on the active build and network access.</p>
+            <div class="docs-callout"><strong>Build issue?</strong> Check that <code>swift --version</code> and <code>git --version</code> work, then review the agent logs at <code>~/Library/Logs/PauzeControl/stderr.log</code>.</div>
+          </section>
+
+          <section class="docs-block glass-card" id="android-app">
+            <div class="docs-section-top"><span class="docs-number">04</span><span class="section-kicker">ANDROID SETUP</span></div>
+            <h2>Prepare Android</h2>
+            <p>Install a PauzeControl Android build distributed through your approved project channel. Check the app repository for the current release notes and package details; this website does not mirror APK files.</p>
             <ol>
-              <li>Launch the Mac-side agent and Android companion from the test build you were given.</li>
-              <li>Use the pairing flow shown in that build. Confirm that the host details refer to your own Mac.</li>
-              <li>Allow the devices to connect on the network required by the app configuration.</li>
-              <li>Test one function at a time and check each device for permission prompts or visible errors.</li>
+              <li>Open Tailscale and confirm the device is connected to the same trusted tailnet as your Mac.</li>
+              <li>Open PauzeControl and navigate to <strong>Settings → Device Studio</strong>, then add a Mac profile if that screen is available in your build.</li>
+              <li>Keep the profile name recognisable so you can distinguish it from other Macs.</li>
+              <li>If a feature shown in these notes is missing, verify the installed app version. Not every feature is available in every release.</li>
             </ol>
-            <div class="docs-callout">Pairing labels and exact steps may change as development continues. Follow the instructions displayed by your build if they differ from this overview.</div>
+            <div class="docs-links"><a class="button button-glass" href="https://github.com/PauzeDevs/PauzeControl/releases" target="_blank" rel="noreferrer">Check releases ↗</a><a class="button button-glass" href="https://github.com/PauzeDevs/PauzeControl/blob/main/docs/BUILD_NOTES.md" target="_blank" rel="noreferrer">Build notes ↗</a></div>
+          </section>
+
+          <section class="docs-block glass-card" id="connect">
+            <div class="docs-section-top"><span class="docs-number">05</span><span class="section-kicker">PAIRING</span></div>
+            <h2>Connect your devices</h2>
+            <p>In the Android app's Mac profile, use the Mac's Tailscale IP address or hostname. Enter the host only—do not include <code>http://</code> or a URL path.</p>
+            <div class="docs-field-list">
+              <div><span>Host</span><p>Your Mac's Tailscale IP or hostname.</p></div>
+              <div><span>Port</span><p><code>47777</code> by default, unless you changed the agent configuration.</p></div>
+              <div><span>Pairing secret</span><p>The secret printed by the Mac installer. Treat it like a password.</p></div>
+            </div>
+            <h3>Confirm the connection</h3>
+            <ul>
+              <li>Make sure both devices show as connected in Tailscale.</li>
+              <li>Check the host and port in the active profile.</li>
+              <li>Confirm the Mac agent is running and required macOS permissions have been granted.</li>
+              <li>If authentication fails, verify the pairing secret and confirm both devices use compatible builds.</li>
+            </ul>
           </section>
 
           <section class="docs-block glass-card" id="permissions">
-            <div class="section-kicker">03 / System access</div>
-            <h2>Permissions and privacy</h2>
-            <p>Some Mac features depend on macOS privacy permissions. Grant only the access required by the capability you are testing, and review the operating system's explanation before approving it.</p>
-            <ul>
-              <li><strong>Screen capture:</strong> live screen viewing may require screen-recording access.</li>
-              <li><strong>Remote keyboard and pointer:</strong> input-control behaviour may require Accessibility or Input Monitoring permission, depending on the current implementation.</li>
-              <li><strong>Network access:</strong> local firewall or network settings can affect whether the devices can find each other.</li>
-            </ul>
-            <p>The website itself does not collect Mac screen contents, local files, audio, or private device-session telemetry.</p>
+            <div class="docs-section-top"><span class="docs-number">06</span><span class="section-kicker">MACOS PRIVACY</span></div>
+            <h2>Permissions</h2>
+            <p>Grant permissions only for the features you intend to use. The exact prompts depend on the macOS version and the capability being tested.</p>
+            <div class="docs-permission-list">
+              <div><strong>Screen Recording</strong><p>Required for capturing the Mac display for Live Screen. Restart the agent after changing this permission.</p></div>
+              <div><strong>Accessibility</strong><p>Needed for supported remote mouse, keyboard, and input-control features.</p></div>
+              <div><strong>Input Monitoring</strong><p>Enable only if the restriction feature in your build explicitly requires it.</p></div>
+              <div><strong>Network access</strong><p>Tailscale connectivity and local firewall settings affect whether Android can reach the agent.</p></div>
+            </div>
           </section>
 
-          <section class="docs-block glass-card" id="transfers">
-            <div class="section-kicker">04 / File handling</div>
-            <h2>Testing file transfers safely</h2>
+          <section class="docs-block glass-card" id="safe-use">
+            <div class="docs-section-top"><span class="docs-number">07</span><span class="section-kicker">SECURITY</span></div>
+            <h2>Privacy and safe use</h2>
             <ul>
-              <li>Begin with a small, non-sensitive test file.</li>
-              <li>Confirm that the saved filename and file size match the original.</li>
-              <li>Test empty files separately from normal files.</li>
-              <li>If a transfer is interrupted, confirm the receiving file is not mistaken for a completed transfer.</li>
-              <li>Avoid confidential data in development builds and bug reports.</li>
+              <li><strong>Keep access private.</strong> PauzeControl is designed to use a trusted Tailscale network. Do not port-forward the agent's control port to the public internet.</li>
+              <li><strong>Protect pairing secrets.</strong> Never publish secrets, access tokens, or unredacted authentication logs.</li>
+              <li><strong>Transfer carefully.</strong> Start with a small, non-sensitive file and verify it arrived intact. Retain your original until the transfer is confirmed.</li>
+              <li><strong>Use permissions deliberately.</strong> Enable only the macOS permissions required for the features you want to use.</li>
+              <li><strong>Use authorised devices.</strong> Control only Macs you own or have permission to administer.</li>
             </ul>
-            <p>File transfer is still in testing. Keep a separate copy of anything important until your test build has been validated.</p>
+            <p class="docs-muted">Clipboard operations are intended to be user-initiated, not continuous background collection. Review the app's current release notes for version-specific transfer limits and behaviour.</p>
           </section>
 
           <section class="docs-block glass-card" id="troubleshooting">
-            <div class="section-kicker">05 / Troubleshooting</div>
-            <h2>When something does not work</h2>
-            <ul>
-              <li>Confirm both devices are on a compatible test build and the intended network.</li>
-              <li>Review macOS permissions and any error message shown in the app.</li>
-              <li>Restart the feature or reconnect the devices, then note whether the problem repeats.</li>
-              <li>For audio/video timing issues, include the Android device model and the actions that cause the offset.</li>
-              <li>Do not post pairing secrets, access tokens, private addresses, or sensitive files in public issues.</li>
-            </ul>
+            <div class="docs-section-top"><span class="docs-number">08</span><span class="section-kicker">TROUBLESHOOTING</span></div>
+            <h2>Common issues</h2>
+            <details class="docs-faq">
+              <summary>Android shows the Mac as offline</summary>
+              <ul>
+                <li>Reconnect Tailscale on both devices and verify they are in the same tailnet.</li>
+                <li>Check the Mac's Tailscale IP or hostname and port <code>47777</code>.</li>
+                <li>Confirm the Mac agent is running and the correct profile is active.</li>
+                <li>Check the pairing secret and the Mac agent's error log.</li>
+              </ul>
+            </details>
+            <details class="docs-faq">
+              <summary>Live Screen is black or keeps reconnecting</summary>
+              <ul>
+                <li>Confirm Screen Recording permission is enabled on the Mac.</li>
+                <li>Restart the agent after changing permissions.</li>
+                <li>Try a lower stream quality if the network is unstable.</li>
+              </ul>
+            </details>
+            <details class="docs-faq">
+              <summary>Clipboard, file transfer, or audio controls fail</summary>
+              <ul>
+                <li>Check that the Android app and Mac agent both support that feature.</li>
+                <li>Confirm the correct Mac profile is selected.</li>
+                <li>Review the Mac agent's error log for details.</li>
+              </ul>
+            </details>
+            <details class="docs-faq">
+              <summary>The Android app will not update</summary>
+              <p>An APK update generally needs to be signed with the same certificate as the installed app. A debug build may use a different key. Back up local data before uninstalling an app to resolve a signing mismatch.</p>
+            </details>
           </section>
 
           <section class="docs-block glass-card" id="reporting">
-            <div class="section-kicker">06 / Improve the app</div>
-            <h2>Report a bug with useful detail</h2>
-            <p>Include the app build, macOS version, Android version, device models, repeatable steps, expected behaviour, actual behaviour, and redacted logs where relevant. Do not include passwords, access tokens, or other secrets.</p>
+            <div class="docs-section-top"><span class="docs-number">09</span><span class="section-kicker">SUPPORT</span></div>
+            <h2>Report an issue</h2>
+            <p>Good reports describe one reproducible problem. Include:</p>
+            <ul>
+              <li>Android app version and Mac agent version.</li>
+              <li>Android device model and macOS version.</li>
+              <li>Steps to reproduce, expected result, and actual result.</li>
+              <li>Relevant error messages or redacted logs.</li>
+            </ul>
+            <div class="docs-callout"><strong>Remove private information first.</strong> Do not attach pairing secrets, passwords, access tokens, private files, or logs that expose credentials.</div>
             <div class="docs-links">
-              <a class="button button-primary" href="https://github.com/PauzeDevs/PauzeControl/issues" target="_blank" rel="noreferrer">Open an issue ↗</a>
-              <a class="button button-glass" href="status.html">Check status</a>
+              <a class="button button-primary" href="https://github.com/PauzeDevs/PauzeControl/issues" target="_blank" rel="noreferrer">Report a bug ↗</a>
+              <a class="button button-glass" href="status.html">View system status</a>
+              <a class="button button-glass" href="https://github.com/PauzeDevs/PauzeControl" target="_blank" rel="noreferrer">Open repository ↗</a>
             </div>
           </section>
         </article>
