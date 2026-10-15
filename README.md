@@ -1,5 +1,7 @@
 # PauzeControl Website
 
+**Live website:** https://pauzedevs.github.io/PauzeControl-Website/
+
 The public-facing website for PauzeControl, a PauzeDevs project. The visual direction is a restrained, Apple-inspired Liquid Glass aesthetic: translucent surfaces, optical depth, reflective edges, and subtle motion—without a 3D device showcase or external JavaScript libraries.
 
 ## Pages
