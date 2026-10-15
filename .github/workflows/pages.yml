@@ -11,7 +11,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: github-pages-\${{ github.ref }}
+  group: github-pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -108,7 +108,7 @@ jobs:
       id-token: write
     environment:
       name: github-pages
-      url: \${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
