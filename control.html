@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0d12">
+  <meta name="description" content="Explore an iOS-inspired browser interface for PauzeControl, the private Mac-to-Android control project by PauzeDevs. Interactive preview; no live device connection.">
+  <link rel="canonical" href="https://pauzecontrol.devs.surf/control.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PauzeControl Web Experience">
+  <meta property="og:description" content="A project-specific, iOS-inspired web interface for PauzeControl. Interactive preview, not a live connection.">
+  <meta property="og:url" content="https://pauzecontrol.devs.surf/control.html">
+  <meta name="twitter:card" content="summary">
+  <title>PauzeControl Web Experience — PauzeDevs</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/control.css">
+  <script src="assets/js/control.js" defer></script>
+</head>
+<body>
+  <a class="pcw-skip" href="#main">Skip to content</a>
+  <div class="pcw-backdrop" aria-hidden="true"></div>
+  <header class="pcw-topbar">
+    <a class="pcw-brand" href="index.html" aria-label="PauzeControl website home">
+      <span class="pcw-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>PauzeControl</span>
+    </a>
+    <div class="pcw-topbar-right">
+      <span class="pcw-preview-tag"><span></span> Interactive preview</span>
+      <a class="pcw-back-link" href="index.html">Website home <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main id="main" class="pcw-shell">
+    <section class="pcw-intro">
+      <p class="pcw-eyebrow">PAUZ DEVS <span>/</span> WEB EXPERIENCE</p>
+      <h1>Your Mac.<br><span>In your hands.</span></h1>
+      <p class="pcw-intro-copy">A browser-based concept for PauzeControl, with the clarity, softness, and motion of iOS—built around your Mac-to-Android workflow.</p>
+      <div class="pcw-disclaimer"><span aria-hidden="true">ⓘ</span><p><strong>Preview environment.</strong> This page does not connect to your Mac or Android device. Controls and sample metrics are illustrative only; use the PauzeControl app for actual device actions.</p></div>
+    </section>
+
+    <section class="pcw-app" aria-label="PauzeControl web interface preview">
+      <aside class="pcw-sidebar">
+        <div class="pcw-sidebar-heading">
+          <span class="pcw-mini-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <div><strong>PauzeControl</strong><small>Control center</small></div>
+        </div>
+        <div class="pcw-profile-card">
+          <div class="pcw-avatar" aria-hidden="true">M</div>
+          <div class="pcw-profile-text"><strong data-profile-name>MacBook Air</strong><span>Sample profile</span></div>
+          <span class="pcw-demo-dot" title="Demo profile"></span>
+        </div>
+        <p class="pcw-nav-label">WORKSPACE</p>
+        <nav class="pcw-nav" aria-label="Preview sections">
+          <button type="button" class="is-active" data-view="overview" aria-current="page"><span class="pcw-nav-icon">⌂</span> Overview</button>
+          <button type="button" data-view="screen"><span class="pcw-nav-icon">▣</span> Live Screen</button>
+          <button type="button" data-view="devices"><span class="pcw-nav-icon">▦</span> Device Studio</button>
+          <button type="button" data-view="transfers"><span class="pcw-nav-icon">⇄</span> Transfers</button>
+          <button type="button" data-view="settings"><span class="pcw-nav-icon">⚙</span> Settings</button>
+        </nav>
+        <div class="pcw-sidebar-foot"><span class="pcw-lock">◇</span><span><strong>Private by design</strong><small>Connect through your trusted network</small></span></div>
+      </aside>
+
+      <div class="pcw-workspace">
+        <div class="pcw-mobile-head">
+          <span class="pcw-mini-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <strong>PauzeControl</strong>
+          <span class="pcw-preview-tag"><span></span> Demo</span>
+        </div>
+        <div class="pcw-workspace-top">
+          <div><p class="pcw-date" data-local-date>YOUR WORKSPACE</p><h2 data-page-title>Overview</h2></div>
+          <button type="button" class="pcw-round-button" data-toast="Notifications are not connected in this preview." aria-label="Preview notifications">♧</button>
+        </div>
+
+        <section class="pcw-view is-visible" data-panel="overview">
+          <article class="pcw-hero-card">
+            <div class="pcw-hero-orb pcw-hero-orb-a"></div><div class="pcw-hero-orb pcw-hero-orb-b"></div>
+            <div class="pcw-hero-content">
+              <span class="pcw-overline">ACTIVE PROFILE · SAMPLE</span>
+              <h3 data-hero-profile>MacBook Air</h3>
+              <p>Remote workspace</p>
+              <span class="pcw-status-pill"><span></span> Preview mode · not connected</span>
+            </div>
+            <div class="pcw-hero-glyph" aria-hidden="true"><span>⌘</span><i></i><i></i></div>
+          </article>
+
+          <div class="pcw-section-title"><div><p class="pcw-overline">AT A GLANCE</p><h3>System overview</h3></div><span class="pcw-demo-caption">Sample data</span></div>
+          <div class="pcw-metrics">
+            <article class="pcw-metric"><div class="pcw-metric-top"><span class="pcw-metric-icon pcw-blue">◴</span><span class="pcw-spark pcw-spark-blue" aria-hidden="true">▁▃▂▅▄▆</span></div><p>CPU usage</p><strong>--<small>%</small></strong><span class="pcw-metric-foot">Live telemetry unavailable</span></article>
+            <article class="pcw-metric"><div class="pcw-metric-top"><span class="pcw-metric-icon pcw-purple">▤</span><span class="pcw-spark pcw-spark-purple" aria-hidden="true">▂▃▅▃▆▄</span></div><p>Memory</p><strong>--<small> GB</small></strong><span class="pcw-metric-foot">Waiting for a real connection</span></article>
+            <article class="pcw-metric"><div class="pcw-metric-top"><span class="pcw-metric-icon pcw-green">▰</span><span class="pcw-battery-icon" aria-hidden="true">▰</span></div><p>Battery</p><strong>--<small>%</small></strong><span class="pcw-metric-foot">No device data received</span></article>
+          </div>
+
+          <div class="pcw-section-title pcw-actions-heading"><div><p class="pcw-overline">QUICK ACTIONS</p><h3>At your command</h3></div><span class="pcw-demo-caption">Demo only</span></div>
+          <div class="pcw-actions">
+            <button type="button" data-toast="Preview only — open PauzeControl on Android to send a real command." class="pcw-action"><span class="pcw-action-icon">⌑</span><strong>Lock screen</strong><small>Secure your Mac</small></button>
+            <button type="button" data-toast="Preview only — sleep is not sent to any device." class="pcw-action"><span class="pcw-action-icon">☾</span><strong>Sleep</strong><small>Low-power state</small></button>
+            <button type="button" data-toast="Preview only — restart is not sent to any device." class="pcw-action"><span class="pcw-action-icon">↻</span><strong>Restart</strong><small>Reboot your Mac</small></button>
+            <button type="button" data-toast="Preview only — shutdown is not sent to any device." class="pcw-action"><span class="pcw-action-icon">⏻</span><strong>Shut down</strong><small>Power off your Mac</small></button>
+          </div>
+
+          <div class="pcw-bottom-grid">
+            <article class="pcw-subcard"><div class="pcw-subcard-head"><div><p class="pcw-overline">CONNECTION</p><h3>Network path</h3></div><span class="pcw-mini-symbol">⌁</span></div><div class="pcw-connection-line"><span class="pcw-connection-node">A</span><div><strong>Android controller</strong><small>Private Tailscale network</small></div></div><div class="pcw-connector"><i></i><small>Connection not established</small></div><div class="pcw-connection-line"><span class="pcw-connection-node pcw-node-mac">M</span><div><strong data-profile-name>MacBook Air</strong><small>Mac agent · sample profile</small></div></div></article>
+            <article class="pcw-subcard"><div class="pcw-subcard-head"><div><p class="pcw-overline">RECENT ACTIVITY</p><h3>Activity feed</h3></div><span class="pcw-mini-symbol">↗</span></div><div class="pcw-empty-activity"><span>◷</span><strong>No device activity here yet</strong><p>Real actions appear in the PauzeControl app. This preview does not collect device events.</p></div></article>
+          </div>
+        </section>
+
+        <section class="pcw-view" data-panel="screen" hidden>
+          <div class="pcw-panel-heading"><div><p class="pcw-overline">REMOTE DISPLAY</p><h3>Live Screen</h3><p>Watch or interact with your Mac when connected in the app.</p></div><span class="pcw-screen-badge">Preview</span></div>
+          <div class="pcw-screen-preview"><div class="pcw-screen-menu"><span>●</span><span>●</span><span>●</span><small>PAUZECONTROL · SAMPLE SCREEN</small></div><div class="pcw-screen-center"><span class="pcw-screen-symbol">⌘</span><strong>No stream connected</strong><p>The H.264 display feed is available through the native PauzeControl setup—not this standalone preview.</p></div><div class="pcw-screen-footer"><span>VIEW MODE · DEMO</span><span>— FPS</span></div></div>
+          <div class="pcw-segment" role="group" aria-label="Screen preview mode"><button type="button" class="is-selected" data-screen-mode="view">View</button><button type="button" data-screen-mode="control">Control</button></div>
+          <button type="button" class="pcw-primary-button" data-toast="No live stream is connected. Open PauzeControl on Android to use Live Screen.">Connect to Live Screen <span>↗</span></button>
+        </section>
+
+        <section class="pcw-view" data-panel="devices" hidden>
+          <div class="pcw-panel-heading"><div><p class="pcw-overline">DEVICE STUDIO</p><h3>Your Macs, together.</h3><p>Switch between sample profiles to preview the multi-device workflow.</p></div><span class="pcw-screen-badge">Demo</span></div>
+          <div class="pcw-device-list">
+            <button type="button" class="pcw-device-option is-selected" data-profile="MacBook Air"><span class="pcw-device-icon">▱</span><span><strong>MacBook Air</strong><small>Sample profile · no connection</small></span><span class="pcw-device-check">✓</span></button>
+            <button type="button" class="pcw-device-option" data-profile="Mac mini"><span class="pcw-device-icon">▣</span><span><strong>Mac mini</strong><small>Sample profile · no connection</small></span><span class="pcw-device-check">✓</span></button>
+            <button type="button" class="pcw-device-option" data-profile="Studio Mac"><span class="pcw-device-icon">▤</span><span><strong>Studio Mac</strong><small>Sample profile · no connection</small></span><span class="pcw-device-check">✓</span></button>
+          </div>
+          <button type="button" class="pcw-primary-button" data-toast="Profile changes in this page are local demo state only. Save real device profiles in the Android app.">Manage profiles in app <span>↗</span></button>
+          <p class="pcw-note">These are example profile names. No hostnames, pairing secrets, or real device records are stored on this page.</p>
+        </section>
+
+        <section class="pcw-view" data-panel="transfers" hidden>
+          <div class="pcw-panel-heading"><div><p class="pcw-overline">MOVE THINGS SAFELY</p><h3>Transfers</h3><p>Manual clipboard and file transfers, designed for deliberate actions.</p></div><span class="pcw-screen-badge">Preview</span></div>
+          <div class="pcw-transfer-grid">
+            <article class="pcw-transfer-card"><span class="pcw-transfer-icon">▤</span><h4>Clipboard</h4><p>Send or retrieve text only when you choose to. No background clipboard polling.</p><button type="button" data-toast="Clipboard access is disabled in this browser preview. Use the PauzeControl app on your trusted network.">Open clipboard <span>→</span></button></article>
+            <article class="pcw-transfer-card"><span class="pcw-transfer-icon">⇧</span><h4>File transfer</h4><p>Move selected files through your private connection. Existing files are not overwritten.</p><button type="button" data-toast="File transfer is not connected here. Use the PauzeControl app and Mac agent.">Choose file <span>→</span></button></article>
+            <article class="pcw-transfer-card"><span class="pcw-transfer-icon">♫</span><h4>Audio devices</h4><p>Preview the feature area for selecting your Mac's input and output devices.</p><button type="button" data-toast="Audio device discovery needs a connected Mac agent; none is active in this preview.">Audio settings <span>→</span></button></article>
+          </div>
+          <p class="pcw-note">Privacy-first by design: this page never asks for your pairing secret or uploads files.</p>
+        </section>
+
+        <section class="pcw-view" data-panel="settings" hidden>
+          <div class="pcw-panel-heading"><div><p class="pcw-overline">YOUR ENVIRONMENT</p><h3>Settings</h3><p>A few interface preferences for this web preview.</p></div><span class="pcw-screen-badge">Local</span></div>
+          <div class="pcw-setting-list">
+            <div class="pcw-setting"><span class="pcw-setting-icon">◐</span><div><strong>Appearance</strong><small>Dark glass interface</small></div><span class="pcw-setting-value">Dark</span></div>
+            <div class="pcw-setting"><span class="pcw-setting-icon">⌁</span><div><strong>Network</strong><small>Private Tailscale connection</small></div><span class="pcw-setting-value">Not connected</span></div>
+            <div class="pcw-setting"><span class="pcw-setting-icon">♧</span><div><strong>Notifications</strong><small>Device alerts need app connection</small></div><span class="pcw-setting-value">Off</span></div>
+            <div class="pcw-setting"><span class="pcw-setting-icon">◇</span><div><strong>Security</strong><small>Never enter a real pairing secret here</small></div><span class="pcw-setting-value">Protected</span></div>
+          </div>
+          <a class="pcw-primary-button pcw-link-button" href="https://github.com/PauzeDevs/PauzeControl" target="_blank" rel="noreferrer">View source repository <span>↗</span></a>
+        </section>
+
+        <div class="pcw-toast" role="status" aria-live="polite" data-toast-area hidden></div>
+        <footer class="pcw-workspace-foot"><span>PAUZECONTROL · PAUZEDEVS</span><span>Browser concept · No live device access</span></footer>
+      </div>
+    </section>
+    <p class="pcw-disclaimer-bottom">This is an independent PauzeDevs web interface concept. It is not iOS, does not emulate Apple software, and is not affiliated with Apple. Real remote control remains in the PauzeControl Android app and macOS agent.</p>
+  </main>
+</body>
+</html>
