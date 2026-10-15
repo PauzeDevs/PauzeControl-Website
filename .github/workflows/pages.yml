@@ -35,8 +35,11 @@ jobs:
               "index.html",
               "status.html",
               "docs.html",
+              "control.html",
               "assets/css/styles.css",
+              "assets/css/control.css",
               "assets/js/main.js",
+              "assets/js/control.js",
               "assets/favicon.svg",
           ]
           missing = [name for name in required if not (root / name).is_file()]
@@ -95,7 +98,9 @@ jobs:
           PY
 
       - name: Check JavaScript syntax
-        run: node --check assets/js/main.js
+        run: |
+          node --check assets/js/main.js
+          node --check assets/js/control.js
 
   deploy:
     name: Deploy GitHub Pages
