@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08090c">
+  <meta name="description" content="PauzeControl service status and monitoring scope. No uptime is reported unless it is independently monitored.">
+  <title>System status — PauzeControl</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="ambient ambient--one" aria-hidden="true"></div>
+  <div class="ambient ambient--two" aria-hidden="true"></div>
+  <header class="site-header" data-header>
+    <div class="shell header-inner">
+      <a class="brand" href="index.html" aria-label="PauzeControl home"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>PauzeControl</span></a>
+      <button class="menu-toggle glass-icon" type="button" aria-expanded="false" aria-controls="primary-nav" data-menu-toggle><span class="sr-only">Toggle navigation</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 17h16"/></svg></button>
+      <nav class="nav glass-nav" id="primary-nav" aria-label="Main navigation" data-nav>
+        <a href="index.html#features">Features</a>
+        <a href="status.html" aria-current="page">System status</a>
+        <a href="docs.html">Documentation</a>
+        <a href="index.html#changelog">What's new</a>
+        <a class="nav-cta" href="https://github.com/PauzeDevs/PauzeControl" target="_blank" rel="noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero shell">
+      <div class="breadcrumb"><a href="index.html">PauzeControl</a><span aria-hidden="true">/</span><span>System status</span></div>
+      <div class="section-kicker">Public status</div>
+      <h1>Status, without<br><span class="text-gradient">the guesswork.</span></h1>
+      <p>We report what can actually be verified. PauzeControl connects devices directly; this page cannot see your private Mac-to-Android session, and an unconfigured monitor is never shown as “operational”.</p>
+    </section>
+
+    <section class="shell page-content">
+      <div class="status-overview">
+        <article class="status-tile glass-card">
+          <div class="status-tile-head"><span class="section-kicker">Website</span><span class="state-chip state-chip--success">Page loaded</span></div>
+          <h2>This status page is responding</h2>
+          <p>This check only confirms that this page loaded in your browser. It is not an independent uptime probe.</p>
+        </article>
+        <article class="status-tile glass-card">
+          <div class="status-tile-head"><span class="section-kicker">Public app monitoring</span><span class="state-chip state-chip--pending">Not configured</span></div>
+          <h2>No public relay feed is connected</h2>
+          <p>No centralized PauzeControl relay health endpoint or independent public uptime monitor is currently configured for this page.</p>
+        </article>
+      </div>
+
+      <div class="status-table glass-card" role="table" aria-label="PauzeControl monitoring components">
+        <div class="status-table-head" role="row"><span role="columnheader">Component</span><span role="columnheader">Current information</span><span role="columnheader">Monitoring state</span></div>
+        <div class="status-row" role="row"><span role="cell">Website page</span><span role="cell">Rendered in this browser</span><span role="cell"><span class="state-chip state-chip--success">Loaded</span></span></div>
+        <div class="status-row" role="row"><span role="cell">PauzeControl Mac agent</span><span role="cell">Runs on a user's Mac</span><span role="cell"><span class="state-chip state-chip--neutral">Not monitored</span></span></div>
+        <div class="status-row" role="row"><span role="cell">Android pairing session</span><span role="cell">Private device connection</span><span role="cell"><span class="state-chip state-chip--neutral">Not visible here</span></span></div>
+        <div class="status-row" role="row"><span role="cell">Public health feed</span><span role="cell">No endpoint configured</span><span role="cell"><span class="state-chip state-chip--pending">Not connected</span></span></div>
+      </div>
+      <p class="status-updated">This page was opened at <time data-page-check>your local time</time>. This is a browser-local timestamp, not the timestamp of an external health check.</p>
+
+      <aside class="status-explainer">
+        <h3>Why isn't the Mac agent marked online?</h3>
+        <p>The Mac-side service is intended to communicate with the paired Android device over a direct connection. A public website cannot safely infer whether a particular Mac is powered on, reachable, or paired. The website will only report app-service health if a real, privacy-conscious monitoring source is added.</p>
+      </aside>
+      <div class="docs-links">
+        <a class="button button-primary" href="https://github.com/PauzeDevs/PauzeControl/issues" target="_blank" rel="noreferrer">Report a problem <span aria-hidden="true">↗</span></a>
+        <a class="button button-glass" href="docs.html">Read setup notes</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-main"><a class="brand brand--footer" href="index.html"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>PauzeControl</span></a><p>A PauzeDevs project. Built in the open, with care.</p><div class="footer-links"><a href="status.html">Status</a><a href="docs.html">Documentation</a><a href="https://github.com/PauzeDevs/PauzeControl" target="_blank" rel="noreferrer">GitHub ↗</a></div></div>
+    <div class="shell footer-bottom"><span>© <span data-year>2026</span> PauzeDevs</span><span>Independent project · Not affiliated with Apple</span></div>
+  </footer>
+</body>
+</html>
