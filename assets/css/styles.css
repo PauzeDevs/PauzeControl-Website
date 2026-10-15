@@ -232,6 +232,9 @@ h1 { max-width: 660px; margin: 27px 0 22px; font-size: clamp(52px, 7vw, 88px); l
 .state-chip--neutral { color: #a9b4ca; }
 .state-chip--pending { color: #dec08c; background: rgba(209,173,111,.07); border-color: rgba(209,173,111,.14); }
 .state-chip--success { color: #a9e2c3; background: rgba(104,201,149,.07); border-color: rgba(104,201,149,.13); }
+.status-demo-state { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.status-demo-updated { color: #747d8d; font-size: 10px; }
+
 .status-table { overflow: hidden; border-radius: 20px; }
 .status-table-head, .status-row { display: grid; grid-template-columns: 1.15fr 1fr .85fr; align-items: center; gap: 16px; padding: 17px 22px; }
 .status-table-head { background: rgba(255,255,255,.035); color: #818b9f; font-size: 9px; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
