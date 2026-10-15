@@ -25,7 +25,7 @@ Then open the local server address for port 4173 in your browser.
 
 ## Deployment
 
-The GitHub Actions workflow validates required files, local links/anchors, and JavaScript syntax on pull requests. Once changes are integrated into the main branch, the workflow can configure GitHub Pages and publish the static site.
+The GitHub Actions workflow validates required files, local links/anchors, and JavaScript syntax on pull requests. Before the first deployment, open repository Settings → Pages and choose GitHub Actions as the source. After the site changes are integrated into the main branch, the workflow validates and publishes the static site.
 
 ## Design and accessibility
 
