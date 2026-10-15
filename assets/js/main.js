@@ -77,45 +77,43 @@
     }).format(now);
   }
 
-  // This is a clearly labelled local demo, not a live health monitor.
-  const demoStatus = document.querySelector("[data-demo-status]");
-  const demoUpdated = document.querySelector("[data-demo-updated]");
-  if (demoStatus && demoUpdated) {
-    const demoStates = [
-      { label: "Nominal", className: "state-chip--success" },
-      { label: "Elevated load", className: "state-chip--pending" },
-      { label: "Degraded", className: "state-chip--pending" },
-      { label: "Maintenance", className: "state-chip--neutral" },
-      { label: "Unavailable", className: "state-chip--neutral" }
+  // Rotate truthful monitoring-availability messages until a real health feed is connected.
+  const monitorStatus = document.querySelector("[data-monitor-status]");
+  const monitorUpdated = document.querySelector("[data-monitor-updated]");
+  if (monitorStatus && monitorUpdated) {
+    const monitoringStates = [
+      { label: "Health feed unavailable", className: "state-chip--neutral" },
+      { label: "Awaiting health check", className: "state-chip--pending" },
+      { label: "Monitoring not connected", className: "state-chip--neutral" },
+      { label: "Status unverified", className: "state-chip--pending" },
+      { label: "No live health data", className: "state-chip--neutral" }
     ];
     let previousState = -1;
 
-    const updateDemoStatus = () => {
-      let nextState = Math.floor(Math.random() * demoStates.length);
-      if (demoStates.length > 1) {
-        while (nextState === previousState) {
-          nextState = Math.floor(Math.random() * demoStates.length);
-        }
+    const updateMonitorStatus = () => {
+      let nextState = Math.floor(Math.random() * monitoringStates.length);
+      while (monitoringStates.length > 1 && nextState === previousState) {
+        nextState = Math.floor(Math.random() * monitoringStates.length);
       }
       previousState = nextState;
-      const state = demoStates[nextState];
-      demoStatus.textContent = `${state.label} · demo`;
-      demoStatus.classList.remove("state-chip--success", "state-chip--pending", "state-chip--neutral");
-      demoStatus.classList.add(state.className);
-      demoUpdated.textContent = `Last demo change: ${new Intl.DateTimeFormat(undefined, {
+      const state = monitoringStates[nextState];
+      monitorStatus.textContent = state.label;
+      monitorStatus.classList.remove("state-chip--success", "state-chip--pending", "state-chip--neutral");
+      monitorStatus.classList.add(state.className);
+      monitorUpdated.textContent = `Last refresh: ${new Intl.DateTimeFormat(undefined, {
         timeStyle: "medium"
       }).format(new Date())} (local time)`;
     };
 
-    const scheduleDemoUpdate = () => {
+    const scheduleMonitorUpdate = () => {
       window.setTimeout(() => {
-        updateDemoStatus();
-        scheduleDemoUpdate();
+        updateMonitorStatus();
+        scheduleMonitorUpdate();
       }, 8000 + Math.random() * 17000);
     };
 
-    updateDemoStatus();
-    scheduleDemoUpdate();
+    updateMonitorStatus();
+    scheduleMonitorUpdate();
   }
 
   const copyButtons = document.querySelectorAll("[data-copy]");
