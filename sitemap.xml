@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://pauzecontrol.devs.surf/</loc></url>
-  <url><loc>https://pauzecontrol.devs.surf/status.html</loc></url>
-  <url><loc>https://pauzecontrol.devs.surf/docs.html</loc></url>
-  <url><loc>https://pauzecontrol.devs.surf/control.html</loc></url>
+  <url><loc>https://pauzedevs.github.io/PauzeControl-Website/</loc></url>
+  <url><loc>https://pauzedevs.github.io/PauzeControl-Website/status.html</loc></url>
+  <url><loc>https://pauzedevs.github.io/PauzeControl-Website/docs.html</loc></url>
+  <url><loc>https://pauzedevs.github.io/PauzeControl-Website/control.html</loc></url>
 </urlset>
