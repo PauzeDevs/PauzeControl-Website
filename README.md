@@ -5,6 +5,7 @@ The public-facing website for PauzeControl, a PauzeDevs project. The visual dire
 ## Pages
 
 - Home: product overview and development-stage feature descriptions.
+- Web experience: responsive iOS-inspired browser interface preview for PauzeControl with interactive overview, Live Screen, Device Studio, transfers, and settings panels. Controls are demo-only and never contact a real device.
 - System status: separates what this page can verify from service and device monitoring that is not connected.
 - Documentation: connection model, setup overview, permissions, file-transfer safety, troubleshooting, and bug-reporting guidance.
 - Not found: a branded 404 page for invalid routes.
