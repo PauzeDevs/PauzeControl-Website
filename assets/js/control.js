@@ -30,8 +30,8 @@
       });
       navButtons.forEach((item) => {
         const active = item === button;
-        item.classList.toggle("is-active", active);
-        if (active) item.setAttribute("aria-current", "page");
+        item.classList.toggle("is-active", item.dataset.view === view);
+        if (item.dataset.view === view) item.setAttribute("aria-current", "page");
         else item.removeAttribute("aria-current");
       });
       if (pageTitle) pageTitle.textContent = titleByView[view] || "Overview";
