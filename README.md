@@ -1,5 +1,10 @@
 # PauzeControl Website
 
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Inter&weight=600&size=22&duration=2600&pause=700&color=4C8DFF&center=true&vCenter=true&width=680&lines=PauzeControl+Website" alt="Animated header: PauzeControl Website">
+</p>
+
+
 **Live website:** https://pauzedevs.github.io/PauzeControl-Website/
 
 The public-facing website for PauzeControl, a PauzeDevs project. The visual direction is a restrained, Apple-inspired Liquid Glass aesthetic: translucent surfaces, optical depth, reflective edges, and subtle motion—without a 3D device showcase or external JavaScript libraries.
